@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# check internet
+internet=4
+until [ $internet == 0 ]
+do
+    internet=`wget -q --spider http://google.com ; echo $?`
+done
+
+# Sync onedrive when internet available
+/usr/bin/onedrive --synchronize
