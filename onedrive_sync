@@ -11,6 +11,7 @@ currentDirectory=`pwd`
 obsidianImage="$currentDirectory/obsidian-icon.svg"
 
 # Sync onedrive when internet available
+export DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=/run/user/${UID}/bus}" # this line of code enable to run notify-send through cron
 notify-send -u normal -t 5000 -i $obsidianImage "Obsidian Sync" "Started"
 /usr/bin/onedrive --synchronize
 notify-send -u normal -t 5000 -i $obsidianImage "Obsidian Sync" "Done"
