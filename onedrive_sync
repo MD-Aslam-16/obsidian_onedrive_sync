@@ -7,5 +7,10 @@ do
     internet=`wget -q --spider http://google.com ; echo $?`
 done
 
+currentDirectory=`pwd`
+obsidianImage="$currentDirectory/obsidian-icon.svg"
+
 # Sync onedrive when internet available
+notify-send -u normal -t 5000 -i $obsidianImage "Obsidian Sync" "Started"
 /usr/bin/onedrive --synchronize
+notify-send -u normal -t 5000 -i $obsidianImage "Obsidian Sync" "Done"
