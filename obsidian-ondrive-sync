@@ -13,5 +13,19 @@ obsidianImage="$currentDirectory/obsidian-icon.svg"
 # Sync onedrive when internet available
 export DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=/run/user/${UID}/bus}" # this line of code enable to run notify-send through cron
 notify-send -u normal -t 5000 -i $obsidianImage "Obsidian Sync" "Started"
-/usr/bin/onedrive --synchronize
+
+DISTRO=$(grep '^NAME=' /etc/os-release | cut -d '=' -f2 | tr -d '"')
+onedrive=`which onedrive`
+
+# Check distro
+if [[ "$DISTRO" == "Arch Linux" ]]; then
+	echo "Arch"
+	$onedrive
+elif [[ "$DISTRO" == "Ubuntu" ]]; then
+	$onedrive --synchronize
+else
+	echo "Your Distro is not Arch nor Ubuntu"
+	exit 1
+fi
+
 notify-send -u normal -t 5000 -i $obsidianImage "Obsidian Sync" "Done"
