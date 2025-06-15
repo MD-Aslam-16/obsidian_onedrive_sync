@@ -19,7 +19,6 @@ onedrive=`which onedrive`
 
 # Check distro
 if [[ "$DISTRO" == "Arch Linux" ]]; then
-	echo "Arch"
 	$onedrive
 elif [[ "$DISTRO" == "Ubuntu" ]]; then
 	$onedrive --synchronize

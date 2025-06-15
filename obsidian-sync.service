@@ -1,0 +1,14 @@
+[Unit]
+Description=Obsidian onedrive sync
+DefaultDependencies=no
+After=network.target
+
+[Service]
+Type=oneshot
+User=aslam
+ExecStart=/opt/obsidian_onedrive_sync/obsidian-ondrive-sync start
+ExecStop=/opt/obsidian_onedrive_sync/obsidian-ondrive-sync stop
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
