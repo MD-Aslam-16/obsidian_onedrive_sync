@@ -6,9 +6,7 @@ After=network.target
 [Service]
 Type=oneshot
 User=aslam
-ExecStart=/opt/obsidian_onedrive_sync/obsidian-ondrive-sync start
-ExecStop=/opt/obsidian_onedrive_sync/obsidian-ondrive-sync stop
-RemainAfterExit=true
+ExecStart=/opt/obsidian_onedrive_sync/obsidian-onedrive-sync start
 
 [Install]
 WantedBy=multi-user.target
